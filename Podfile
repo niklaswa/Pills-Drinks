@@ -7,4 +7,5 @@ target 'Pills & Drinks' do
 
   # Pods for Pills & Drinks
   pod 'UIEmptyState'
+  pod 'TapticEngine'
 end

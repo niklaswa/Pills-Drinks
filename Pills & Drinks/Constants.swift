@@ -22,6 +22,17 @@ func fetchDrinkData() ->[drink]? {
     }
 }
 
+func getDrinkTypeNiceName(type: drinkType) -> String {
+    switch type {
+    case .water:
+        return "Wasser"
+    case .coke:
+        return "Cola"
+    case .speci:
+        return "Spezi"
+    }
+}
+
 struct drink {
     var name: String
     var type: drinkType

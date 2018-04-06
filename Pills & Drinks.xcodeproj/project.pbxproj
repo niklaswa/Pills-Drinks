@@ -19,6 +19,7 @@
 		85A7C65E2076B3E100A208D4 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A7C65D2076B3E100A208D4 /* HealthKit.framework */; };
 		85A7C66020774E6800A208D4 /* AddDrinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C65F20774E6800A208D4 /* AddDrinkController.swift */; };
 		85A7C66220774FCD00A208D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C66120774FCD00A208D4 /* Constants.swift */; };
+		85A7C6642077853000A208D4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C6632077853000A208D4 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		85A7C65D2076B3E100A208D4 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		85A7C65F20774E6800A208D4 /* AddDrinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkController.swift; sourceTree = "<group>"; };
 		85A7C66120774FCD00A208D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		85A7C6632077853000A208D4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B55DCD42FC6D785688E96BE4 /* Pods-Pills & Drinks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pills & Drinks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pills & Drinks/Pods-Pills & Drinks.release.xcconfig"; sourceTree = "<group>"; };
 		DCF7FB9CDC78BE8BC0A5F6C8 /* Pods_Pills___Drinks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Pills___Drinks.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 				8529C5E92076A890006C4D6A /* LaunchScreen.storyboard */,
 				8529C5EC2076A890006C4D6A /* Info.plist */,
 				85A7C66120774FCD00A208D4 /* Constants.swift */,
+				85A7C6632077853000A208D4 /* Extensions.swift */,
 			);
 			path = "Pills & Drinks";
 			sourceTree = "<group>";
@@ -198,10 +201,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Pills & Drinks/Pods-Pills & Drinks-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TapticEngine/TapticEngine.framework",
 				"${BUILT_PRODUCTS_DIR}/UIEmptyState/UIEmptyState.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TapticEngine.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIEmptyState.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +242,7 @@
 				85A7C66020774E6800A208D4 /* AddDrinkController.swift in Sources */,
 				8529C5E32076A88E006C4D6A /* SecondViewController.swift in Sources */,
 				8529C5DF2076A88E006C4D6A /* AppDelegate.swift in Sources */,
+				85A7C6642077853000A208D4 /* Extensions.swift in Sources */,
 				8501BFEA2076AAEA00604514 /* Drinks.swift in Sources */,
 				85A7C66220774FCD00A208D4 /* Constants.swift in Sources */,
 				8501BFEC2076ABA000604514 /* Health.swift in Sources */,

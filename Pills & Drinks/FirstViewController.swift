@@ -34,10 +34,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         if let drinkData = drinks {
             cell.textLabel?.text = drinkData[indexPath.row].name
-            cell.detailTextLabel?.text = String(drinkData[indexPath.row].amount) + "ml"
+            cell.detailTextLabel?.text = String(drinkData[indexPath.row].amount) + "ml " + getDrinkTypeNiceName(type: drinkData[indexPath.row].type)
         }
         return cell
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TapticEngine
 
 class AddDrinkController: UIViewController {
 
@@ -17,10 +18,13 @@ class AddDrinkController: UIViewController {
         if (nameField.text != nil) && nameField.text != "" {
             let newDrink: drink = drink(name: nameField.text!, type: drinkType.water, amount: 200)
             drinks?.append(newDrink)
-            
+            TapticEngine.notification.feedback(.success)
             nameField.placeholder = "Name"
+            nameField.text = ""
+            performSegueToReturnBack()
+        } else {
+            TapticEngine.notification.feedback(.error)
         }
-        
     }
     
     override func viewDidLoad() {

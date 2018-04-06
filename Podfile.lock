@@ -1,16 +1,20 @@
 PODS:
+  - TapticEngine (1.1.0)
   - UIEmptyState (3.1.0)
 
 DEPENDENCIES:
+  - TapticEngine
   - UIEmptyState
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - TapticEngine
     - UIEmptyState
 
 SPEC CHECKSUMS:
+  TapticEngine: b78b5513432b3c01af2ebbe018c0995778306757
   UIEmptyState: 9b501dc90933ce2743949ecbf18c20ffb33a2be9
 
-PODFILE CHECKSUM: e25c0e9e2624c1473e167af3939d4feac24e1caf
+PODFILE CHECKSUM: 34ac63305dbdc4206489246ad43e9aa246c9d148
 
 COCOAPODS: 1.5.0
