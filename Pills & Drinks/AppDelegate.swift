@@ -18,10 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         if let drinkData = fetchDrinkData() {
+            print("Load drinkData...")
+            print(drinkData)
             drinks = drinkData
+            print(drinks!)
         } else {
             drinks = [drink]()
-            // drinks?.append([name: "1L Wasser", drinkType: drinkType.water, amount: 1000])
+            //drinks?.append(name: "1L Wasser", drinkType: drinkType.water, amount: 1000)
         }
         
         return true
@@ -36,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        saveDrinkData(drinks: drinks!)
+        saveDrinkData(drinks!)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -50,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
-        saveDrinkData(drinks: drinks!)
+        saveDrinkData(drinks!)
     }
 
 

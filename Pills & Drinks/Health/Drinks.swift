@@ -13,20 +13,23 @@ import Foundation
 import HealthKit
 
 class Drinks {
-    func calculateHealthData(drink: drink) {
+    func calculateHealthData(drink: drink) -> [HKQuantityTypeIdentifier: Double] {
         let amount = Double(drink.amount)
         var thingsToAdd = [HKQuantityTypeIdentifier: Double]()
         
         switch drink.type {
-        case .water:
+        case "water":
             thingsToAdd[HKQuantityTypeIdentifier.dietaryWater] = amount
-        case .coke:
+        case "coke":
             thingsToAdd[HKQuantityTypeIdentifier.dietaryWater] = amount * 0.89
             thingsToAdd[HKQuantityTypeIdentifier.dietaryCaffeine] = amount * 0.1
-        case .speci:
+        case "speci":
             thingsToAdd[HKQuantityTypeIdentifier.dietaryWater] = amount * 0.90
             thingsToAdd[HKQuantityTypeIdentifier.dietaryCaffeine] = amount * 0.06
             thingsToAdd[HKQuantityTypeIdentifier.dietaryEnergyConsumed] = amount * 0.43
+        default:
+            break
         }
+        return thingsToAdd
     }
 }
