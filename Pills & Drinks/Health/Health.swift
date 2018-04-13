@@ -52,10 +52,15 @@ class Health {
         return true
     }
     
-    func authorizeHealthAcces(thingsToAdd: [HKQuantityTypeIdentifier: Double]) -> Bool {
+    func authorizeHealthAccess(thingsToAdd: [HKQuantityTypeIdentifier: Double]) -> Bool {
         for element in thingsToAdd {
-            if !checkHealthAccess(identifier: element.key) {
+            switch healthKitStore.authorizationStatus(for: HKSampleType.quantityType(forIdentifier: element.key)!) {
+            case .notDetermined:
                 healthKitTypesToWriteNow.insert(HKSampleType.quantityType(forIdentifier: element.key)!)
+            case .sharingDenied:
+                return false
+            case .sharingAuthorized:
+                break
             }
         }
         if healthKitTypesToWriteNow.count > 0 {

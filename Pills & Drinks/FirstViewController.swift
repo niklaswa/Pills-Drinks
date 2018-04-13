@@ -8,6 +8,9 @@
 
 import UIKit
 import TapticEngine
+import ZAlertView
+import Toast_Swift
+import SAConfettiView
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -28,25 +31,36 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewWillAppear(animated)
         drinkTableView.reloadData()
     }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = d.calculateHealthData(drink: drinks![indexPath.row])
-        let currentDrink = drinks![indexPath.row]
+    
+    func addDrink(currentDrink: drink) {
+        let data = d.calculateHealthData(drink: currentDrink)
         if !h.checkHealthRights(thingsToAdd: data) {
             print("Don't has all the rights to write the data")
             let alert = UIAlertController(title: "Health Zugriff verweigert", message: "Der Zugriff auf Health wurde verweigert. Bitte lasse den Zugriff im folgenden Dialog zu und versuche es erneut.", preferredStyle: .actionSheet)
             
             alert.addAction(UIAlertAction(title: "Zugriff gewähren", style: .default, handler:
-                {(alert: UIAlertAction!) in if self.h.authorizeHealthAcces(thingsToAdd: data) {
+                {(alert: UIAlertAction!) in
+                    if self.h.authorizeHealthAccess(thingsToAdd: data) {
                         if !self.h.addThingsToHealth(thingsToAdd: data, drink: currentDrink) {
                             TapticEngine.notification.feedback(.error)
                         }
                         TapticEngine.notification.feedback(.success)
-                    } }
-                // Rekursion?
+                    } else {
+                        let deniedAlert = UIAlertController(title: "Health Zugriff verweigert", message: "Zugriff auf Health wurde explizit verweigert. Bitte erlauben Sie den Zugriff in den Quellen in der Health-App.", preferredStyle: .alert)
+                        deniedAlert.addAction(UIAlertAction(title: "Zu Health wechseln", style: .default, handler:
+                            {(alert: UIAlertAction!) in
+                                let healthUrl = URL(string: "x-apple-health://")
+                                if UIApplication.shared.canOpenURL(healthUrl!) {
+                                    UIApplication.shared.open(healthUrl!, options: [:], completionHandler: nil)
+                                }
+                        }))
+                        deniedAlert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel))
+                        self.present(deniedAlert, animated: true)
+                    }
+                }
             ))
             alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler:
-            {(alert: UIAlertAction!) in TapticEngine.notification.feedback(.error) }
+                {(alert: UIAlertAction!) in TapticEngine.notification.feedback(.error) }
             ))
             
             self.present(alert, animated: true)
@@ -55,8 +69,42 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if !h.addThingsToHealth(thingsToAdd: data, drink: currentDrink) {
                 TapticEngine.notification.feedback(.error)
             }
+            self.view.makeToast("\(currentDrink.name) erfolgreich zu Health hinzugefügt")
             TapticEngine.notification.feedback(.success)
+            
+            let confettiView = SAConfettiView(frame: self.view.bounds)
+            self.view.addSubview(confettiView)
+            confettiView.startConfetti()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                confettiView.stopConfetti()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.9) {
+                    confettiView.removeFromSuperview()
+                }
+            }
+            
         }
+    }
+    
+    var dialog: ZAlertView = ZAlertView()
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentDrink = drinks![indexPath.row]
+        
+        dialog = ZAlertView(
+            title: "Hinzufügen?",
+            message: "\(currentDrink.name) wirklich hinzufügen?",
+            isOkButtonLeft: false,
+            okButtonText: "Ja!",
+            cancelButtonText: "Abbrechen",
+            okButtonHandler: {(sender: ZAlertView) in
+                self.addDrink(currentDrink: currentDrink); self.dialog.dismissAlertView()
+            },
+            cancelButtonHandler: {(sender: ZAlertView) in
+                self.dialog.dismissAlertView()
+            }
+        )
+        dialog.show()
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
