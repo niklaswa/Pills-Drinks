@@ -46,6 +46,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         }
                         TapticEngine.notification.feedback(.success)
                     } else {
+                        // TODO: Der folgende Code muss in den Callback von authorizeHealthAccess (Callback von healthKitStore.requestAuthorization, da er im Moment immer ausgeführt wird, obwohl der User gar nicht explizit verweigert hat, sondern nur noch nie zugestimmt hat
                         let deniedAlert = UIAlertController(title: "Health Zugriff verweigert", message: "Zugriff auf Health wurde explizit verweigert. Bitte erlauben Sie den Zugriff in den Quellen in der Health-App.", preferredStyle: .alert)
                         deniedAlert.addAction(UIAlertAction(title: "Zu Health wechseln", style: .default, handler:
                             {(alert: UIAlertAction!) in
