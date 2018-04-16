@@ -21,7 +21,7 @@ class AddDrinkController: UIViewController, UIPickerViewDataSource, UIPickerView
     @IBOutlet weak var nameField: UITextField!
     
     var drinkTypes = [String]()
-    var selectedDrinkType = "water"
+    var selectedDrinkType = drinkType.water
     @IBOutlet weak var typeField: UIPickerView!
     
     @IBOutlet weak var amountSlider: UISlider!
@@ -39,7 +39,10 @@ class AddDrinkController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     @IBAction func addDrinkPressed(_ sender: UIButton) {
         if (nameField.text != nil) && nameField.text != "" {
-            let newDrink: drink = drink(name: nameField.text!, type: selectedDrinkType, amount: amount)
+            let newDrink = drink()
+            newDrink.amount = amount
+            newDrink.type = selectedDrinkType
+            newDrink.name = nameField.text!
             drinks?.append(newDrink)
             TapticEngine.notification.feedback(.success)
             nameField.placeholder = "Name"
@@ -65,7 +68,16 @@ class AddDrinkController: UIViewController, UIPickerViewDataSource, UIPickerView
         return drinkTypes[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedDrinkType = drinkTypes[row]
+        switch drinkTypes[row] {
+        case "water":
+            selectedDrinkType = drinkType.water
+        case "coke":
+            selectedDrinkType = drinkType.coke
+        case "speci":
+            selectedDrinkType = drinkType.speci
+        default:
+            selectedDrinkType = drinkType.water
+        }
     }
     
 }

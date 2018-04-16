@@ -121,7 +121,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         if let drinkData = drinks {
             cell.textLabel?.text = drinkData[indexPath.row].name
-            cell.detailTextLabel?.text = String(drinkData[indexPath.row].amount) + "ml " + drinkData[indexPath.row].type
+            cell.detailTextLabel?.text = String(drinkData[indexPath.row].amount) + "ml " + getDrinkTypeNiceName(type: drinkData[indexPath.row].type)
         }
         return cell
     }

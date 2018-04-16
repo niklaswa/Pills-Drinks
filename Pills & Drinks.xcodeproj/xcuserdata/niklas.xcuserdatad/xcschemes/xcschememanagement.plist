@@ -9,10 +9,25 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>WatchExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>8529C5DA2076A88E006C4D6A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>85C740C62084B53000387104</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>85C740EB2084C1AA00387104</key>
 		<dict>
 			<key>primary</key>
 			<true/>
