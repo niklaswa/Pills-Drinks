@@ -13,16 +13,20 @@ var drinks:[drink]?
 func saveDrinkData(_ :[drink]) {
     print("Try to safe drinkData....")
     print(drinks!)
-    //if drinks != nil, drinks!.count > 0 {
-    //    let encodedData = NSKeyedArchiver.archivedData(withRootObject: drinks ?? [drink]())
-    //    UserDefaults.standard.set(encodedData, forKey: "data")
-    //}
+    if drinks != nil, drinks!.count > 0 {
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: drinks ?? [drink]())
+        UserDefaults.standard.set(encodedData, forKey: "data")
+    }
 }
 
 func fetchDrinkData() -> [drink]? {
-    return nil
+    if let data = UserDefaults.standard.data(forKey: "data"),
+        let drinkData = NSKeyedUnarchiver.unarchiveObject(with: data) as? [drink] {
+        return drinkData
+    } else {
+        return nil
+    }
 }
-
 
 func getDrinkTypeNiceName(type: drinkType) -> String {
     switch type {
@@ -41,7 +45,7 @@ class drink: NSObject {
     var amount: Int = 200 // in Milliliter
 }
 
-enum drinkType {
+enum drinkType: String {
     case water
     case coke
     case speci

@@ -52,13 +52,15 @@ class Health {
         return true
     }
     
-    func authorizeHealthAccess(thingsToAdd: [HKQuantityTypeIdentifier: Double]) -> Bool {
+    func authorizeHealthAccess(thingsToAdd: [HKQuantityTypeIdentifier: Double], callback: @escaping (Bool) -> Void) -> Void {
         for element in thingsToAdd {
             switch healthKitStore.authorizationStatus(for: HKSampleType.quantityType(forIdentifier: element.key)!) {
             case .notDetermined:
                 healthKitTypesToWriteNow.insert(HKSampleType.quantityType(forIdentifier: element.key)!)
+                break
             case .sharingDenied:
-                return false
+                callback(false)
+                return
             case .sharingAuthorized:
                 break
             }
@@ -67,10 +69,11 @@ class Health {
             healthKitStore.requestAuthorization(toShare: healthKitTypesToWriteNow, read: []) {
                 (success, error) -> Void in
                 // Callback
+                callback(success)
             }
-            return false
+        } else {
+            callback(true)
         }
-        return true
     }
     
     func addThingsToHealth(thingsToAdd: [HKQuantityTypeIdentifier: Double], drink: drink) -> Bool {

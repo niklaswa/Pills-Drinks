@@ -40,25 +40,26 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             alert.addAction(UIAlertAction(title: "Zugriff gewähren", style: .default, handler:
                 {(alert: UIAlertAction!) in
-                    if self.h.authorizeHealthAccess(thingsToAdd: data) {
-                        if !self.h.addThingsToHealth(thingsToAdd: data, drink: currentDrink) {
-                            TapticEngine.notification.feedback(.error)
+                    self.h.authorizeHealthAccess(thingsToAdd: data, callback: { (success) in
+                        if success {
+                            if !self.h.addThingsToHealth(thingsToAdd: data, drink: currentDrink) {
+                                TapticEngine.notification.feedback(.error)
+                            }
+                            TapticEngine.notification.feedback(.success)
+                        } else {
+                            let deniedAlert = UIAlertController(title: "Health Zugriff verweigert", message: "Zugriff auf Health wurde explizit verweigert. Bitte erlauben Sie den Zugriff in den Quellen in der Health-App.", preferredStyle: .alert)
+                            deniedAlert.addAction(UIAlertAction(title: "Zu Health wechseln", style: .default, handler:
+                                {(alert: UIAlertAction!) in
+                                    let healthUrl = URL(string: "x-apple-health://")
+                                    if UIApplication.shared.canOpenURL(healthUrl!) {
+                                        UIApplication.shared.open(healthUrl!, options: [:], completionHandler: nil)
+                                    }
+                            }))
+                            deniedAlert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel))
+                            self.present(deniedAlert, animated: true)
                         }
-                        TapticEngine.notification.feedback(.success)
-                    } else {
-                        // TODO: Der folgende Code muss in den Callback von authorizeHealthAccess (Callback von healthKitStore.requestAuthorization, da er im Moment immer ausgeführt wird, obwohl der User gar nicht explizit verweigert hat, sondern nur noch nie zugestimmt hat
-                        let deniedAlert = UIAlertController(title: "Health Zugriff verweigert", message: "Zugriff auf Health wurde explizit verweigert. Bitte erlauben Sie den Zugriff in den Quellen in der Health-App.", preferredStyle: .alert)
-                        deniedAlert.addAction(UIAlertAction(title: "Zu Health wechseln", style: .default, handler:
-                            {(alert: UIAlertAction!) in
-                                let healthUrl = URL(string: "x-apple-health://")
-                                if UIApplication.shared.canOpenURL(healthUrl!) {
-                                    UIApplication.shared.open(healthUrl!, options: [:], completionHandler: nil)
-                                }
-                        }))
-                        deniedAlert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel))
-                        self.present(deniedAlert, animated: true)
-                    }
-                }
+                    })
+            }
             ))
             alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler:
                 {(alert: UIAlertAction!) in TapticEngine.notification.feedback(.error) }
@@ -82,7 +83,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     confettiView.removeFromSuperview()
                 }
             }
-            
         }
     }
     

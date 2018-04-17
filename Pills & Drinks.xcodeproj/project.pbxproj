@@ -16,6 +16,7 @@
 		8529C5E62076A88E006C4D6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8529C5E42076A88E006C4D6A /* Main.storyboard */; };
 		8529C5E82076A890006C4D6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8529C5E72076A890006C4D6A /* Assets.xcassets */; };
 		8529C5EB2076A890006C4D6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8529C5E92076A890006C4D6A /* LaunchScreen.storyboard */; };
+		859A90A520850F75005477FD /* HealthItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859A90A420850F75005477FD /* HealthItem.swift */; };
 		85A7C65E2076B3E100A208D4 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A7C65D2076B3E100A208D4 /* HealthKit.framework */; };
 		85A7C66020774E6800A208D4 /* AddDrinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C65F20774E6800A208D4 /* AddDrinkController.swift */; };
 		85A7C66220774FCD00A208D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C66120774FCD00A208D4 /* Constants.swift */; };
@@ -83,6 +84,9 @@
 		8529C5E72076A890006C4D6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8529C5EA2076A890006C4D6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8529C5EC2076A890006C4D6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85590E7B2084FF410020A472 /* WatchExtension Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchExtension Extension.entitlements"; sourceTree = "<group>"; };
+		85590E7C2084FF480020A472 /* WatchExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchExtension.entitlements; sourceTree = "<group>"; };
+		859A90A420850F75005477FD /* HealthItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthItem.swift; sourceTree = "<group>"; };
 		85A7C65C2076B3E100A208D4 /* Pills & Drinks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Pills & Drinks.entitlements"; sourceTree = "<group>"; };
 		85A7C65D2076B3E100A208D4 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		85A7C65F20774E6800A208D4 /* AddDrinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkController.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 			children = (
 				8501BFE92076AAEA00604514 /* Drinks.swift */,
 				8501BFEB2076ABA000604514 /* Health.swift */,
+				859A90A420850F75005477FD /* HealthItem.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 		85C740ED2084C1AA00387104 /* WatchExtension */ = {
 			isa = PBXGroup;
 			children = (
+				85590E7C2084FF480020A472 /* WatchExtension.entitlements */,
 				85C740EE2084C1AA00387104 /* Interface.storyboard */,
 				85C740F12084C1AB00387104 /* Assets.xcassets */,
 				85C740F32084C1AB00387104 /* Info.plist */,
@@ -193,6 +199,7 @@
 		85C740FC2084C1AB00387104 /* WatchExtension Extension */ = {
 			isa = PBXGroup;
 			children = (
+				85590E7B2084FF410020A472 /* WatchExtension Extension.entitlements */,
 				85C740FD2084C1AB00387104 /* InterfaceController.swift */,
 				85C740FF2084C1AB00387104 /* ExtensionDelegate.swift */,
 				85C741012084C1AC00387104 /* Assets.xcassets */,
@@ -291,9 +298,19 @@
 					};
 					85C740EB2084C1AA00387104 = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					85C740F72084C1AB00387104 = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -407,6 +424,7 @@
 				85A7C66220774FCD00A208D4 /* Constants.swift in Sources */,
 				8501BFEC2076ABA000604514 /* Health.swift in Sources */,
 				8529C5E12076A88E006C4D6A /* FirstViewController.swift in Sources */,
+				859A90A520850F75005477FD /* HealthItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,6 +640,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchExtension Extension/WatchExtension Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FH6TNGWF2;
 				INFOPLIST_FILE = "WatchExtension Extension/Info.plist";
@@ -644,6 +663,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchExtension Extension/WatchExtension Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FH6TNGWF2;
 				INFOPLIST_FILE = "WatchExtension Extension/Info.plist";
@@ -667,6 +687,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WatchExtension/WatchExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FH6TNGWF2;
 				IBSC_MODULE = WatchExtension_Extension;
@@ -686,6 +707,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WatchExtension/WatchExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FH6TNGWF2;
 				IBSC_MODULE = WatchExtension_Extension;
