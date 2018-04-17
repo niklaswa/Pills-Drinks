@@ -11,4 +11,5 @@ target 'Pills & Drinks' do
   pod 'ZAlertView'
   pod 'Toast-Swift', '~> 3.0.1'
   pod 'SAConfettiView', :git => 'https://github.com/Shanlon/SAConfettiView.git'
+  pod 'Eureka'
 end

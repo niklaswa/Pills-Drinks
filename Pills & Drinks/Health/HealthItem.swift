@@ -17,6 +17,19 @@ class HealthItem {
         self.category = category
     }
     
+    required init(coder decoder: NSCoder) {
+        self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
+        self.category = decoder.decodeObject(forKey: "category") as? ItemCategory ?? .drink
+    }
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: "name")
+        coder.encode(category, forKey: "category")
+    }
+    
+    
+    
+    
     func getMetaData() -> String {
         return "\(self.name)"
     }

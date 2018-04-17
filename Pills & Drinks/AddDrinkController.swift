@@ -47,6 +47,7 @@ class AddDrinkController: UIViewController, UIPickerViewDataSource, UIPickerView
             nameField.placeholder = "Name"
             nameField.text = ""
             performSegueToReturnBack()
+            self.tabBarController?.tabBar.isHidden = false
         } else {
             TapticEngine.notification.feedback(.error)
         }
@@ -61,6 +62,8 @@ class AddDrinkController: UIViewController, UIPickerViewDataSource, UIPickerView
         
         self.typeField.dataSource = self;
         self.typeField.delegate = self;
+        
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

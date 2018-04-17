@@ -1,4 +1,5 @@
 PODS:
+  - Eureka (4.1.1)
   - SAConfettiView (0.1.8)
   - TapticEngine (1.1.0)
   - Toast-Swift (3.0.1)
@@ -6,6 +7,7 @@ PODS:
   - ZAlertView (1.0.4)
 
 DEPENDENCIES:
+  - Eureka
   - SAConfettiView (from `https://github.com/Shanlon/SAConfettiView.git`)
   - TapticEngine
   - Toast-Swift (~> 3.0.1)
@@ -14,6 +16,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Eureka
     - TapticEngine
     - Toast-Swift
     - UIEmptyState
@@ -29,12 +32,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/Shanlon/SAConfettiView.git
 
 SPEC CHECKSUMS:
+  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
   SAConfettiView: c87031a2280659261b730fce3669fb10e73636ee
   TapticEngine: b78b5513432b3c01af2ebbe018c0995778306757
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   UIEmptyState: 9b501dc90933ce2743949ecbf18c20ffb33a2be9
   ZAlertView: 59fffdb4e37a01df461835566d5101052b8af953
 
-PODFILE CHECKSUM: bc4a6b5e65f2ff294ca17e7e53d32a2e405e5d02
+PODFILE CHECKSUM: 46c67319afb83e2687cda601bd71f9ca4a7b8c4d
 
 COCOAPODS: 1.5.0

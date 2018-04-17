@@ -22,6 +22,7 @@
 		85A7C66220774FCD00A208D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C66120774FCD00A208D4 /* Constants.swift */; };
 		85A7C6642077853000A208D4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C6632077853000A208D4 /* Extensions.swift */; };
 		85AD36C52085E56100ED0E64 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD36C42085E56100ED0E64 /* Pill.swift */; };
+		85AD36C720862A8C00ED0E64 /* AddPillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD36C620862A8C00ED0E64 /* AddPillController.swift */; };
 		85C740F02084C1AA00387104 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85C740EE2084C1AA00387104 /* Interface.storyboard */; };
 		85C740F22084C1AB00387104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85C740F12084C1AB00387104 /* Assets.xcassets */; };
 		85C740F92084C1AB00387104 /* WatchExtension Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 85C740F82084C1AB00387104 /* WatchExtension Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -94,6 +95,7 @@
 		85A7C66120774FCD00A208D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		85A7C6632077853000A208D4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		85AD36C42085E56100ED0E64 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
+		85AD36C620862A8C00ED0E64 /* AddPillController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPillController.swift; sourceTree = "<group>"; };
 		85C740EC2084C1AA00387104 /* WatchExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85C740EF2084C1AA00387104 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		85C740F12084C1AB00387104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +110,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		75146C68A3DF95AF6240E34F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8529C5D82076A88E006C4D6A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -139,9 +148,9 @@
 		8501BFED2076AC8300604514 /* Health */ = {
 			isa = PBXGroup;
 			children = (
-				8501BFE92076AAEA00604514 /* Drink.swift */,
 				8501BFEB2076ABA000604514 /* Health.swift */,
 				859A90A420850F75005477FD /* HealthItem.swift */,
+				8501BFE92076AAEA00604514 /* Drink.swift */,
 				85AD36C42085E56100ED0E64 /* Pill.swift */,
 			);
 			path = Health;
@@ -177,6 +186,7 @@
 				8529C5DE2076A88E006C4D6A /* AppDelegate.swift */,
 				8529C5E02076A88E006C4D6A /* FirstViewController.swift */,
 				85A7C65F20774E6800A208D4 /* AddDrinkController.swift */,
+				85AD36C620862A8C00ED0E64 /* AddPillController.swift */,
 				8529C5E22076A88E006C4D6A /* SecondViewController.swift */,
 				8529C5E42076A88E006C4D6A /* Main.storyboard */,
 				8529C5E72076A890006C4D6A /* Assets.xcassets */,
@@ -250,6 +260,7 @@
 			buildPhases = (
 				85C740EA2084C1AA00387104 /* Resources */,
 				85C7410A2084C1AC00387104 /* Embed App Extensions */,
+				75146C68A3DF95AF6240E34F /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -375,6 +386,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Pills & Drinks/Pods-Pills & Drinks-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/SAConfettiView/SAConfettiView.framework",
 				"${BUILT_PRODUCTS_DIR}/TapticEngine/TapticEngine.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
@@ -383,6 +395,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAConfettiView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TapticEngine.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
@@ -427,6 +440,7 @@
 				85A7C66220774FCD00A208D4 /* Constants.swift in Sources */,
 				8501BFEC2076ABA000604514 /* Health.swift in Sources */,
 				8529C5E12076A88E006C4D6A /* FirstViewController.swift in Sources */,
+				85AD36C720862A8C00ED0E64 /* AddPillController.swift in Sources */,
 				85AD36C52085E56100ED0E64 /* Pill.swift in Sources */,
 				859A90A520850F75005477FD /* HealthItem.swift in Sources */,
 			);

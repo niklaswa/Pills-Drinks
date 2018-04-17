@@ -15,6 +15,7 @@ import SAConfettiView
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     private var h = Health()
+    private var tableEntries: [HealthItem]?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -28,7 +29,29 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        switch tabBarController?.selectedIndex {
+        case 1:
+            tableEntries = items?.filter { $0.category == .pill }
+        default:
+            tableEntries = items?.filter { $0.category == .drink }
+        }
+        
         tableView.reloadData()
+    }
+    
+    @IBAction func addItem(_ sender: Any) {
+        print("addItem!")
+        print(tabBarController!.selectedIndex)
+        switch tabBarController!.selectedIndex {
+        case 1:
+            let addPillController:AddPillController = AddPillController()
+            self.present(addPillController, animated: true, completion: nil)
+        default:
+            let addDrinkController:AddDrinkController = AddDrinkController()
+            self.present(addDrinkController, animated: true, completion: nil)
+        }
+        
     }
     
     func addItem(currentItem: HealthItem) {
@@ -88,7 +111,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var dialog: ZAlertView = ZAlertView()
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentItem = items![indexPath.row]
+        let currentItem = tableEntries![indexPath.row]
         
         dialog = ZAlertView(
             title: "Hinzufügen?",
@@ -132,4 +155,3 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 }
-

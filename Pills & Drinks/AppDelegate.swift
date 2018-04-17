@@ -18,13 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         if let itemData = fetchItems() {
-            print("Load drinkData...")
+            print("Load itemData...")
             print(itemData)
             items = itemData
             print(items!)
         } else {
             items = [HealthItem]()
-            items?.append(Drink(name: "Wasserflasche"))
+            items?.append(Drink(name: "Wasserglas"))
         }
         
         return true

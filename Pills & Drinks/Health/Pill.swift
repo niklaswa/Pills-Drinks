@@ -12,9 +12,18 @@ import HealthKit
 class Pill: HealthItem {
     
     init(name: String) {
-        super.init(name: name, category: .pill)
+        super.init(name: name, category: .drink)
     }
     
+    required init(coder decoder: NSCoder) {
+        super.init(coder: decoder)
+    }
+    
+    override func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: "name")
+        coder.encode(category, forKey: "category")
+    }
+
     override func calculateHealthData() -> [HKQuantityTypeIdentifier: Double] {
         var thingsToAdd = [HKQuantityTypeIdentifier: Double]()
             

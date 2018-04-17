@@ -20,6 +20,18 @@ class Drink: HealthItem {
         super.init(name: name, category: .drink)
     }
     
+    required init(coder decoder: NSCoder) {
+        super.init(coder: decoder)
+        self.type = decoder.decodeObject(forKey: "type") as? drinkType ?? .water
+        self.amount = decoder.decodeObject(forKey: "amount") as? Int ?? 200
+    }
+    
+    override func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: "name")
+        coder.encode(category, forKey: "category")
+    }
+    
+    
     override func getMetaData() -> String {
         return "\(self.amount)ml \(self.getDrinkTypeNiceName())"
     }
