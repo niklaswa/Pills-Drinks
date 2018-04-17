@@ -7,7 +7,26 @@
 //
 
 import Foundation
+import HealthKit
 
 class HealthItem {
-    var name
+    var name: String
+    var category: ItemCategory
+    init(name: String, category: ItemCategory) {
+        self.name = name
+        self.category = category
+    }
+    
+    func getMetaData() -> String {
+        return "\(self.name)"
+    }
+    
+    func calculateHealthData() -> [HKQuantityTypeIdentifier: Double] {
+        return [HKQuantityTypeIdentifier: Double]()
+    }
+}
+
+enum ItemCategory: String {
+    case drink
+    case pill
 }

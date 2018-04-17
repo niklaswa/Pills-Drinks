@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14111" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch38" orientation="portrait">
+    <device id="watch42" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -12,8 +12,35 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchExtension" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchExtension" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" id="PvE-yj-Jdc"/>
+                        <button width="1" alignment="left" title="Eintrag hinzufügen" id="393-Vz-54A">
+                            <color key="backgroundColor" red="0.0" green="0.50631712128609718" blue="0.83379600253807107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="ULj-ol-25T" kind="push" id="usS-5G-qfm"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
             </objects>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="hpf-SG-YNs">
+            <objects>
+                <controller id="ULj-ol-25T">
+                    <items>
+                        <table alignment="left" id="sv5-Mo-E5o">
+                            <items>
+                                <tableRow id="MD2-TP-19T">
+                                    <group key="rootItem" width="1" alignment="left" id="3S7-Nd-ueC"/>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="312" y="57"/>
         </scene>
     </scenes>
 </document>

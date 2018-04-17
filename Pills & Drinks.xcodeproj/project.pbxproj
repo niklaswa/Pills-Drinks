@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		61352CF0A763B4D6575FD3F5 /* Pods_Pills___Drinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF7FB9CDC78BE8BC0A5F6C8 /* Pods_Pills___Drinks.framework */; };
-		8501BFEA2076AAEA00604514 /* Drinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501BFE92076AAEA00604514 /* Drinks.swift */; };
+		8501BFEA2076AAEA00604514 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501BFE92076AAEA00604514 /* Drink.swift */; };
 		8501BFEC2076ABA000604514 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501BFEB2076ABA000604514 /* Health.swift */; };
 		8529C5DF2076A88E006C4D6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529C5DE2076A88E006C4D6A /* AppDelegate.swift */; };
 		8529C5E12076A88E006C4D6A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529C5E02076A88E006C4D6A /* FirstViewController.swift */; };
@@ -21,6 +21,7 @@
 		85A7C66020774E6800A208D4 /* AddDrinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C65F20774E6800A208D4 /* AddDrinkController.swift */; };
 		85A7C66220774FCD00A208D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C66120774FCD00A208D4 /* Constants.swift */; };
 		85A7C6642077853000A208D4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C6632077853000A208D4 /* Extensions.swift */; };
+		85AD36C52085E56100ED0E64 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD36C42085E56100ED0E64 /* Pill.swift */; };
 		85C740F02084C1AA00387104 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85C740EE2084C1AA00387104 /* Interface.storyboard */; };
 		85C740F22084C1AB00387104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85C740F12084C1AB00387104 /* Assets.xcassets */; };
 		85C740F92084C1AB00387104 /* WatchExtension Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 85C740F82084C1AB00387104 /* WatchExtension Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -74,7 +75,7 @@
 
 /* Begin PBXFileReference section */
 		0618161BD717A74E62544B47 /* Pods-Pills & Drinks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pills & Drinks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pills & Drinks/Pods-Pills & Drinks.debug.xcconfig"; sourceTree = "<group>"; };
-		8501BFE92076AAEA00604514 /* Drinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drinks.swift; sourceTree = "<group>"; };
+		8501BFE92076AAEA00604514 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		8501BFEB2076ABA000604514 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		8529C5DB2076A88E006C4D6A /* Pills & Drinks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pills & Drinks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8529C5DE2076A88E006C4D6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		85A7C65F20774E6800A208D4 /* AddDrinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkController.swift; sourceTree = "<group>"; };
 		85A7C66120774FCD00A208D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		85A7C6632077853000A208D4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		85AD36C42085E56100ED0E64 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		85C740EC2084C1AA00387104 /* WatchExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85C740EF2084C1AA00387104 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		85C740F12084C1AB00387104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -137,9 +139,10 @@
 		8501BFED2076AC8300604514 /* Health */ = {
 			isa = PBXGroup;
 			children = (
-				8501BFE92076AAEA00604514 /* Drinks.swift */,
+				8501BFE92076AAEA00604514 /* Drink.swift */,
 				8501BFEB2076ABA000604514 /* Health.swift */,
 				859A90A420850F75005477FD /* HealthItem.swift */,
+				85AD36C42085E56100ED0E64 /* Pill.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -420,10 +423,11 @@
 				8529C5E32076A88E006C4D6A /* SecondViewController.swift in Sources */,
 				8529C5DF2076A88E006C4D6A /* AppDelegate.swift in Sources */,
 				85A7C6642077853000A208D4 /* Extensions.swift in Sources */,
-				8501BFEA2076AAEA00604514 /* Drinks.swift in Sources */,
+				8501BFEA2076AAEA00604514 /* Drink.swift in Sources */,
 				85A7C66220774FCD00A208D4 /* Constants.swift in Sources */,
 				8501BFEC2076ABA000604514 /* Health.swift in Sources */,
 				8529C5E12076A88E006C4D6A /* FirstViewController.swift in Sources */,
+				85AD36C52085E56100ED0E64 /* Pill.swift in Sources */,
 				859A90A520850F75005477FD /* HealthItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

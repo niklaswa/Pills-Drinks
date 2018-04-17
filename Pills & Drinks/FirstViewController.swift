@@ -14,35 +14,34 @@ import SAConfettiView
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    private var d = Drinks()
     private var h = Health()
     
-    @IBOutlet weak var drinkTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
          super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        drinkTableView.delegate = self
-        drinkTableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        drinkTableView.reloadData()
+        tableView.reloadData()
     }
     
-    func addDrink(currentDrink: drink) {
-        let data = d.calculateHealthData(drink: currentDrink)
+    func addItem(currentItem: HealthItem) {
+        let data = currentItem.calculateHealthData()
         if !h.checkHealthRights(thingsToAdd: data) {
-            print("Don't has all the rights to write the data")
+            print("Doesn't have all the rights to write the data")
             let alert = UIAlertController(title: "Health Zugriff verweigert", message: "Der Zugriff auf Health wurde verweigert. Bitte lasse den Zugriff im folgenden Dialog zu und versuche es erneut.", preferredStyle: .actionSheet)
             
             alert.addAction(UIAlertAction(title: "Zugriff gewähren", style: .default, handler:
                 {(alert: UIAlertAction!) in
                     self.h.authorizeHealthAccess(thingsToAdd: data, callback: { (success) in
                         if success {
-                            if !self.h.addThingsToHealth(thingsToAdd: data, drink: currentDrink) {
+                            if !self.h.addThingsToHealth(thingsToAdd: data, item: currentItem) {
                                 TapticEngine.notification.feedback(.error)
                             }
                             TapticEngine.notification.feedback(.success)
@@ -68,10 +67,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.present(alert, animated: true)
         } else {
             print("It has all the rights to write the data yay")
-            if !h.addThingsToHealth(thingsToAdd: data, drink: currentDrink) {
+            if !h.addThingsToHealth(thingsToAdd: data, item: currentItem) {
                 TapticEngine.notification.feedback(.error)
             }
-            self.view.makeToast("\(currentDrink.name) erfolgreich zu Health hinzugefügt")
+            self.view.makeToast("\(currentItem.name) erfolgreich zu Health hinzugefügt")
             TapticEngine.notification.feedback(.success)
             
             let confettiView = SAConfettiView(frame: self.view.bounds)
@@ -89,16 +88,16 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var dialog: ZAlertView = ZAlertView()
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentDrink = drinks![indexPath.row]
+        let currentItem = items![indexPath.row]
         
         dialog = ZAlertView(
             title: "Hinzufügen?",
-            message: "\(currentDrink.name) wirklich hinzufügen?",
+            message: "\(currentItem.name) wirklich zu Health hinzufügen?",
             isOkButtonLeft: false,
             okButtonText: "Ja!",
             cancelButtonText: "Abbrechen",
             okButtonHandler: {(sender: ZAlertView) in
-                self.addDrink(currentDrink: currentDrink); self.dialog.dismissAlertView()
+                self.addItem(currentItem: currentItem); self.dialog.dismissAlertView()
             },
             cancelButtonHandler: {(sender: ZAlertView) in
                 self.dialog.dismissAlertView()
@@ -110,8 +109,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let drinkData = drinks {
-            return drinkData.count
+        if let itemData = items {
+            return itemData.count
         } else {
             return 0
         }
@@ -119,17 +118,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        if let drinkData = drinks {
-            cell.textLabel?.text = drinkData[indexPath.row].name
-            cell.detailTextLabel?.text = String(drinkData[indexPath.row].amount) + "ml " + getDrinkTypeNiceName(type: drinkData[indexPath.row].type)
+        if let itemData = items {
+            cell.textLabel?.text = itemData[indexPath.row].name
+            cell.detailTextLabel?.text = itemData[indexPath.row].getMetaData()
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            drinks?.remove(at: indexPath.row)
-            drinkTableView.reloadData()
+            items?.remove(at: indexPath.row)
+            tableView.reloadData()
         }
     }
 }

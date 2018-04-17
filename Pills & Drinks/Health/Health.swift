@@ -68,7 +68,6 @@ class Health {
         if healthKitTypesToWriteNow.count > 0 {
             healthKitStore.requestAuthorization(toShare: healthKitTypesToWriteNow, read: []) {
                 (success, error) -> Void in
-                // Callback
                 callback(success)
             }
         } else {
@@ -76,16 +75,16 @@ class Health {
         }
     }
     
-    func addThingsToHealth(thingsToAdd: [HKQuantityTypeIdentifier: Double], drink: drink) -> Bool {
+    func addThingsToHealth(thingsToAdd: [HKQuantityTypeIdentifier: Double], item: HealthItem) -> Bool {
         for element in thingsToAdd {
-            if !addThingToHealth(thing: element.key, amount: element.value, drink: drink) {
+            if !addThingToHealth(thing: element.key, amount: element.value, item: item) {
                 return false
             }
         }
         return true
     }
     
-    func addThingToHealth(thing: HKQuantityTypeIdentifier, amount: Double, drink: drink) -> Bool {
+    func addThingToHealth(thing: HKQuantityTypeIdentifier, amount: Double, item: HealthItem) -> Bool {
         if checkHealthAccess(identifier: thing) {
             guard let type = HKQuantityType.quantityType(forIdentifier: thing) else {
                 fatalError("\(thing) is no longer available in HealthKit")
@@ -102,9 +101,10 @@ class Health {
             default:
                 quantity = HKQuantity(unit: HKUnit.gramUnit(with: .milli), doubleValue: amount)
             }
-            let metadata = [HKMetadataKeyFoodType: "\(drink.amount)ml \(drink.type)"]
-            let sample = HKQuantitySample(type: type, quantity: quantity, start: Date(), end: Date(), metadata: metadata)
             
+            let metadata = [HKMetadataKeyFoodType: item.getMetaData()]
+            
+            let sample = HKQuantitySample(type: type, quantity: quantity, start: Date(), end: Date(), metadata: metadata)
             //3.  Save to HealthKit
             HKHealthStore().save(sample) { (success, error) in
                 if let error = error {
@@ -115,7 +115,7 @@ class Health {
             }
             return true
         } else {
-            print("No access!!!")
+            print("No access!")
             return false
         }
     }

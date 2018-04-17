@@ -39,11 +39,10 @@ class AddDrinkController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     @IBAction func addDrinkPressed(_ sender: UIButton) {
         if (nameField.text != nil) && nameField.text != "" {
-            let newDrink = drink()
+            let newDrink = Drink(name: nameField.text!)
             newDrink.amount = amount
             newDrink.type = selectedDrinkType
-            newDrink.name = nameField.text!
-            drinks?.append(newDrink)
+            items?.append(newDrink)
             TapticEngine.notification.feedback(.success)
             nameField.placeholder = "Name"
             nameField.text = ""
