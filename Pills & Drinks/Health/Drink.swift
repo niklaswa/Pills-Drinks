@@ -12,24 +12,50 @@
 import Foundation
 import HealthKit
 
-class Drinks {
-    func calculateHealthData(drink: drink) -> [HKQuantityTypeIdentifier: Double] {
-        let amount = Double(drink.amount)
+class Drink: HealthItem {
+    var type: drinkType = .water
+    var amount: Int = 200 //ml
+    
+    init(name: String) {
+        super.init(name: name, category: .drink)
+    }
+    
+    override func getMetaData() -> String {
+        return "\(self.amount)ml \(self.getDrinkTypeNiceName())"
+    }
+    
+    func getDrinkTypeNiceName() -> String {
+        switch self.type {
+        case .water:
+            return "Wasser"
+        case .coke:
+            return "Cola"
+        case .speci:
+            return "Spezi"
+        }
+    }
+    
+    override func calculateHealthData() -> [HKQuantityTypeIdentifier: Double] {
+        let amount = Double(self.amount)
         var thingsToAdd = [HKQuantityTypeIdentifier: Double]()
         
-        switch drink.type {
-        case "water":
+        switch self.type {
+        case .water:
             thingsToAdd[HKQuantityTypeIdentifier.dietaryWater] = amount
-        case "coke":
+        case .coke:
             thingsToAdd[HKQuantityTypeIdentifier.dietaryWater] = amount * 0.89
             thingsToAdd[HKQuantityTypeIdentifier.dietaryCaffeine] = amount * 0.1
-        case "speci":
+        case .speci:
             thingsToAdd[HKQuantityTypeIdentifier.dietaryWater] = amount * 0.90
             thingsToAdd[HKQuantityTypeIdentifier.dietaryCaffeine] = amount * 0.06
             thingsToAdd[HKQuantityTypeIdentifier.dietaryEnergyConsumed] = amount * 0.43
-        default:
-            break
         }
         return thingsToAdd
     }
+}
+
+enum drinkType {
+    case water
+    case coke
+    case speci
 }
