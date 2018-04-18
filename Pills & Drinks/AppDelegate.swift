@@ -21,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Load itemData...")
             print(itemData)
             items = itemData
+            for item in items! {
+                
+                print(item.name)
+                print(item.category)
+            }
             print(items!)
         } else {
             items = [HealthItem]()

@@ -12,7 +12,7 @@ import ZAlertView
 import Toast_Swift
 import SAConfettiView
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate {
 
     private var h = Health()
     private var tableEntries: [HealthItem]?
@@ -25,6 +25,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tabBarController?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,18 +42,27 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.reloadData()
     }
     
-    @IBAction func addItem(_ sender: Any) {
-        print("addItem!")
-        print(tabBarController!.selectedIndex)
+    @IBAction func addItemPressed(_ sender: UIBarButtonItem) {
         switch tabBarController!.selectedIndex {
         case 1:
-            let addPillController:AddPillController = AddPillController()
-            self.present(addPillController, animated: true, completion: nil)
+            self.performSegue(withIdentifier: "AddPillSegue", sender: self)
         default:
-            let addDrinkController:AddDrinkController = AddDrinkController()
-            self.present(addDrinkController, animated: true, completion: nil)
+            self.performSegue(withIdentifier: "AddDrinkSegue", sender: self)
         }
-        
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        switch tabBarController.selectedIndex {
+        case 1:
+            tableEntries = items?.filter { $0.category == .pill }
+            self.navigationItem.title = "Pillen und Medikamente" // TODO: Doesn't work properly
+            print("Pillen und Medikamente")
+        default:
+            tableEntries = items?.filter { $0.category == .drink }
+            self.navigationItem.title = "Getränke" // TODO: Doesn't work properly
+            print("Getränke")
+        }
+        tableView.reloadData()
     }
     
     func addItem(currentItem: HealthItem) {
@@ -67,7 +78,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                             if !self.h.addThingsToHealth(thingsToAdd: data, item: currentItem) {
                                 TapticEngine.notification.feedback(.error)
                             }
-                            TapticEngine.notification.feedback(.success)
+                            self.addingEffect(with: currentItem)
                         } else {
                             let deniedAlert = UIAlertController(title: "Health Zugriff verweigert", message: "Zugriff auf Health wurde explizit verweigert. Bitte erlauben Sie den Zugriff in den Quellen in der Health-App.", preferredStyle: .alert)
                             deniedAlert.addAction(UIAlertAction(title: "Zu Health wechseln", style: .default, handler:
@@ -93,17 +104,21 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if !h.addThingsToHealth(thingsToAdd: data, item: currentItem) {
                 TapticEngine.notification.feedback(.error)
             }
-            self.view.makeToast("\(currentItem.name) erfolgreich zu Health hinzugefügt")
-            TapticEngine.notification.feedback(.success)
-            
-            let confettiView = SAConfettiView(frame: self.view.bounds)
-            self.view.addSubview(confettiView)
-            confettiView.startConfetti()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                confettiView.stopConfetti()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.9) {
-                    confettiView.removeFromSuperview()
-                }
+            self.addingEffect(with: currentItem)
+        }
+    }
+    
+    func addingEffect(with item: HealthItem) {
+        self.view.makeToast("\(item.name) erfolgreich zu Health hinzugefügt")
+        TapticEngine.notification.feedback(.success)
+        
+        let confettiView = SAConfettiView(frame: self.view.bounds)
+        self.view.addSubview(confettiView)
+        confettiView.startConfetti()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            confettiView.stopConfetti()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.9) {
+                confettiView.removeFromSuperview()
             }
         }
     }
@@ -111,7 +126,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var dialog: ZAlertView = ZAlertView()
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentItem = tableEntries![indexPath.row]
+        let currentItem = items![indexPath.row]
         
         dialog = ZAlertView(
             title: "Hinzufügen?",

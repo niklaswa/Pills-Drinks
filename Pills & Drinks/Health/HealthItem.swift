@@ -9,7 +9,7 @@
 import Foundation
 import HealthKit
 
-class HealthItem {
+class HealthItem: NSObject, NSCoding {
     var name: String
     var category: ItemCategory
     init(name: String, category: ItemCategory) {
@@ -19,16 +19,13 @@ class HealthItem {
     
     required init(coder decoder: NSCoder) {
         self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
-        self.category = decoder.decodeObject(forKey: "category") as? ItemCategory ?? .drink
+        self.category = ItemCategory(rawValue: (decoder.decodeObject(forKey: "category") as! String)) ?? .drink
     }
     
     func encode(with coder: NSCoder) {
-        coder.encode(name, forKey: "name")
-        coder.encode(category, forKey: "category")
+        coder.encode(self.name, forKey: "name")
+        coder.encode(self.category.rawValue, forKey: "category")
     }
-    
-    
-    
     
     func getMetaData() -> String {
         return "\(self.name)"

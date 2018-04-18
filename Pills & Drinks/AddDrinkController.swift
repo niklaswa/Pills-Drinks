@@ -10,18 +10,28 @@ import UIKit
 import TapticEngine
 
 class AddDrinkController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        
+        drinkTypes = ["water","coke","speci"]
+        
+        self.typeField.dataSource = self;
+        self.typeField.delegate = self;
+        
+        self.tabBarController?.tabBar.isHidden = true
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return drinkTypes.count
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @IBOutlet weak var nameField: UITextField!
     
     var drinkTypes = [String]()
-    var selectedDrinkType = drinkType.water
+    var selectedDrinkType = DrinkType.water
     @IBOutlet weak var typeField: UIPickerView!
     
     @IBOutlet weak var amountSlider: UISlider!
@@ -53,33 +63,28 @@ class AddDrinkController: UIViewController, UIPickerViewDataSource, UIPickerView
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        drinkTypes = ["water","coke","speci"]
-        
-        self.typeField.dataSource = self;
-        self.typeField.delegate = self;
-        
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return drinkTypes[row]
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch drinkTypes[row] {
         case "water":
-            selectedDrinkType = drinkType.water
+            selectedDrinkType = DrinkType.water
         case "coke":
-            selectedDrinkType = drinkType.coke
+            selectedDrinkType = DrinkType.coke
         case "speci":
-            selectedDrinkType = drinkType.speci
+            selectedDrinkType = DrinkType.speci
         default:
-            selectedDrinkType = drinkType.water
+            selectedDrinkType = DrinkType.water
         }
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return drinkTypes.count
+    }
 }

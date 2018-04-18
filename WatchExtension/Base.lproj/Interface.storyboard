@@ -30,17 +30,11 @@
             <objects>
                 <controller id="ULj-ol-25T">
                     <items>
-                        <table alignment="left" id="sv5-Mo-E5o">
-                            <items>
-                                <tableRow id="MD2-TP-19T">
-                                    <group key="rootItem" width="1" alignment="left" id="3S7-Nd-ueC"/>
-                                </tableRow>
-                            </items>
-                        </table>
+                        <table alignment="left" id="sv5-Mo-E5o"/>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="312" y="57"/>
+            <point key="canvasLocation" x="540" y="122"/>
         </scene>
     </scenes>
 </document>

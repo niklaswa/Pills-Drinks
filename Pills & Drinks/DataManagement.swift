@@ -1,5 +1,5 @@
 //
-//  Constants.swift
+//  DataManagement.swift
 //  Pills & Drinks
 //
 //  Created by Niklas on 06.04.18.
@@ -27,5 +27,3 @@ func fetchItems() -> [HealthItem]? {
         return nil
     }
 }
-
-

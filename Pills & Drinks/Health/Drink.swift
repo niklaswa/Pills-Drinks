@@ -1,5 +1,5 @@
 //
-//  Drinks.swift
+//  Drink.swift
 //  Pills & Drinks
 //
 //  Created by Niklas on 05.04.18.
@@ -13,8 +13,8 @@ import Foundation
 import HealthKit
 
 class Drink: HealthItem {
-    var type: drinkType = .water
-    var amount: Int = 200 //ml
+    var type: DrinkType = .water
+    var amount: NSInteger = 200 //ml
     
     init(name: String) {
         super.init(name: name, category: .drink)
@@ -22,15 +22,18 @@ class Drink: HealthItem {
     
     required init(coder decoder: NSCoder) {
         super.init(coder: decoder)
-        self.type = decoder.decodeObject(forKey: "type") as? drinkType ?? .water
-        self.amount = decoder.decodeObject(forKey: "amount") as? Int ?? 200
+        self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
+        self.category = ItemCategory(rawValue: (decoder.decodeObject(forKey: "category") as! String)) ?? .drink
+        self.type = DrinkType(rawValue: (decoder.decodeObject(forKey: "type") as! String)) ?? .water
+        self.amount = decoder.decodeObject(forKey: "amount") as? Int ?? 0
     }
     
     override func encode(with coder: NSCoder) {
-        coder.encode(name, forKey: "name")
-        coder.encode(category, forKey: "category")
+        coder.encode(self.name, forKey: "name")
+        coder.encode(self.category.rawValue, forKey: "category")
+        coder.encode(self.type.rawValue, forKey: "type")
+        coder.encode(self.amount, forKey: "amount")
     }
-    
     
     override func getMetaData() -> String {
         return "\(self.amount)ml \(self.getDrinkTypeNiceName())"
@@ -66,8 +69,8 @@ class Drink: HealthItem {
     }
 }
 
-enum drinkType {
-    case water
-    case coke
-    case speci
+enum DrinkType : String {
+    case water = "Wasser"
+    case coke  = "Cola"
+    case speci = "Spezi"
 }

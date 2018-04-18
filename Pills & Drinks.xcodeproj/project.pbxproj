@@ -12,14 +12,13 @@
 		8501BFEC2076ABA000604514 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501BFEB2076ABA000604514 /* Health.swift */; };
 		8529C5DF2076A88E006C4D6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529C5DE2076A88E006C4D6A /* AppDelegate.swift */; };
 		8529C5E12076A88E006C4D6A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529C5E02076A88E006C4D6A /* FirstViewController.swift */; };
-		8529C5E32076A88E006C4D6A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529C5E22076A88E006C4D6A /* SecondViewController.swift */; };
 		8529C5E62076A88E006C4D6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8529C5E42076A88E006C4D6A /* Main.storyboard */; };
 		8529C5E82076A890006C4D6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8529C5E72076A890006C4D6A /* Assets.xcassets */; };
 		8529C5EB2076A890006C4D6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8529C5E92076A890006C4D6A /* LaunchScreen.storyboard */; };
 		859A90A520850F75005477FD /* HealthItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859A90A420850F75005477FD /* HealthItem.swift */; };
 		85A7C65E2076B3E100A208D4 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A7C65D2076B3E100A208D4 /* HealthKit.framework */; };
 		85A7C66020774E6800A208D4 /* AddDrinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C65F20774E6800A208D4 /* AddDrinkController.swift */; };
-		85A7C66220774FCD00A208D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C66120774FCD00A208D4 /* Constants.swift */; };
+		85A7C66220774FCD00A208D4 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C66120774FCD00A208D4 /* DataManagement.swift */; };
 		85A7C6642077853000A208D4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7C6632077853000A208D4 /* Extensions.swift */; };
 		85AD36C52085E56100ED0E64 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD36C42085E56100ED0E64 /* Pill.swift */; };
 		85AD36C720862A8C00ED0E64 /* AddPillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD36C620862A8C00ED0E64 /* AddPillController.swift */; };
@@ -81,7 +80,6 @@
 		8529C5DB2076A88E006C4D6A /* Pills & Drinks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pills & Drinks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8529C5DE2076A88E006C4D6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8529C5E02076A88E006C4D6A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		8529C5E22076A88E006C4D6A /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		8529C5E52076A88E006C4D6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8529C5E72076A890006C4D6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8529C5EA2076A890006C4D6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,7 +90,7 @@
 		85A7C65C2076B3E100A208D4 /* Pills & Drinks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Pills & Drinks.entitlements"; sourceTree = "<group>"; };
 		85A7C65D2076B3E100A208D4 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		85A7C65F20774E6800A208D4 /* AddDrinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkController.swift; sourceTree = "<group>"; };
-		85A7C66120774FCD00A208D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		85A7C66120774FCD00A208D4 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 		85A7C6632077853000A208D4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		85AD36C42085E56100ED0E64 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		85AD36C620862A8C00ED0E64 /* AddPillController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPillController.swift; sourceTree = "<group>"; };
@@ -187,12 +185,11 @@
 				8529C5E02076A88E006C4D6A /* FirstViewController.swift */,
 				85A7C65F20774E6800A208D4 /* AddDrinkController.swift */,
 				85AD36C620862A8C00ED0E64 /* AddPillController.swift */,
-				8529C5E22076A88E006C4D6A /* SecondViewController.swift */,
 				8529C5E42076A88E006C4D6A /* Main.storyboard */,
 				8529C5E72076A890006C4D6A /* Assets.xcassets */,
 				8529C5E92076A890006C4D6A /* LaunchScreen.storyboard */,
 				8529C5EC2076A890006C4D6A /* Info.plist */,
-				85A7C66120774FCD00A208D4 /* Constants.swift */,
+				85A7C66120774FCD00A208D4 /* DataManagement.swift */,
 				85A7C6632077853000A208D4 /* Extensions.swift */,
 			);
 			path = "Pills & Drinks";
@@ -433,11 +430,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				85A7C66020774E6800A208D4 /* AddDrinkController.swift in Sources */,
-				8529C5E32076A88E006C4D6A /* SecondViewController.swift in Sources */,
 				8529C5DF2076A88E006C4D6A /* AppDelegate.swift in Sources */,
 				85A7C6642077853000A208D4 /* Extensions.swift in Sources */,
 				8501BFEA2076AAEA00604514 /* Drink.swift in Sources */,
-				85A7C66220774FCD00A208D4 /* Constants.swift in Sources */,
+				85A7C66220774FCD00A208D4 /* DataManagement.swift in Sources */,
 				8501BFEC2076ABA000604514 /* Health.swift in Sources */,
 				8529C5E12076A88E006C4D6A /* FirstViewController.swift in Sources */,
 				85AD36C720862A8C00ED0E64 /* AddPillController.swift in Sources */,

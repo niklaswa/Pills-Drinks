@@ -20,17 +20,17 @@ class Pill: HealthItem {
     }
     
     override func encode(with coder: NSCoder) {
-        coder.encode(name, forKey: "name")
-        coder.encode(category, forKey: "category")
+        coder.encode(self.name, forKey: "name")
+        coder.encode(self.category.rawValue, forKey: "category")
     }
 
     override func calculateHealthData() -> [HKQuantityTypeIdentifier: Double] {
         var thingsToAdd = [HKQuantityTypeIdentifier: Double]()
-            
+        
         thingsToAdd[HKQuantityTypeIdentifier.dietaryWater] = 20
         thingsToAdd[HKQuantityTypeIdentifier.dietaryZinc] = 20
         thingsToAdd[HKQuantityTypeIdentifier.dietaryEnergyConsumed] = 100
-            
+        
         return thingsToAdd
     }
 }
