@@ -25,16 +25,31 @@
                 </controller>
             </objects>
         </scene>
-        <!--Interface Controller-->
+        <!--Item Controller-->
         <scene sceneID="hpf-SG-YNs">
             <objects>
-                <controller id="ULj-ol-25T">
+                <controller id="ULj-ol-25T" customClass="ItemController">
                     <items>
                         <table alignment="left" id="sv5-Mo-E5o"/>
+                        <table alignment="left" id="TJg-HT-YHc">
+                            <items>
+                                <tableRow identifier="ItemRowController" id="sho-1j-0UX" customClass="ItemRowController" customModule="WatchExtension_Extension">
+                                    <group key="rootItem" width="1" alignment="left" layout="vertical" id="fdY-Tr-vPB">
+                                        <items>
+                                            <imageView width="47" alignment="left" id="Hjz-ab-LDF"/>
+                                            <label alignment="left" text="Label" id="uJ5-en-2rv"/>
+                                        </items>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
+                    <connections>
+                        <outlet property="itemTable" destination="TJg-HT-YHc" id="EZ3-qz-ukO"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="540" y="122"/>
+            <point key="canvasLocation" x="539.64102564102564" y="121.61538461538463"/>
         </scene>
     </scenes>
 </document>
