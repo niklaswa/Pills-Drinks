@@ -8,8 +8,9 @@
 
 import UIKit
 import TapticEngine
+import Eureka
 
-class AddDrinkController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class AddDrinkController: FormViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,15 @@ class AddDrinkController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     @IBAction func addDrinkPressed(_ sender: UIButton) {
+        addDrink()
+    }
+    
+    @IBAction func nameFieldReturn(_ sender: UITextField) {
+        addDrink()
+    }
+    
+    
+    private func addDrink() {
         if (nameField.text != nil) && nameField.text != "" {
             let newDrink = Drink(name: nameField.text!)
             newDrink.amount = amount

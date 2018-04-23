@@ -14,7 +14,7 @@ import HealthKit
 
 class Drink: HealthItem {
     var type: DrinkType = .water
-    var amount: NSInteger = 200 //ml
+    var amount: Int = 200 //ml
     
     init(name: String) {
         super.init(name: name, category: .drink)
@@ -25,7 +25,7 @@ class Drink: HealthItem {
         self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
         self.category = ItemCategory(rawValue: (decoder.decodeObject(forKey: "category") as! String)) ?? .drink
         self.type = DrinkType(rawValue: (decoder.decodeObject(forKey: "type") as! String)) ?? .water
-        self.amount = decoder.decodeObject(forKey: "amount") as? Int ?? 0
+        self.amount = decoder.decodeInteger(forKey: "amount")
     }
     
     override func encode(with coder: NSCoder) {
@@ -36,18 +36,7 @@ class Drink: HealthItem {
     }
     
     override func getMetaData() -> String {
-        return "\(self.amount)ml \(self.getDrinkTypeNiceName())"
-    }
-    
-    func getDrinkTypeNiceName() -> String {
-        switch self.type {
-        case .water:
-            return "Wasser"
-        case .coke:
-            return "Cola"
-        case .speci:
-            return "Spezi"
-        }
+        return "\(self.amount)ml \(getDrinkTypeNiceName(self.type))"
     }
     
     override func calculateHealthData() -> [HKQuantityTypeIdentifier: Double] {
@@ -70,7 +59,20 @@ class Drink: HealthItem {
 }
 
 enum DrinkType : String {
+    static let allValues = [DrinkType.water, .coke, .speci]
+    
     case water = "Wasser"
     case coke  = "Cola"
     case speci = "Spezi"
+}
+
+func getDrinkTypeNiceName(_ from: DrinkType) -> String {
+    switch from {
+    case .water:
+        return "Wasser"
+    case .coke:
+        return "Cola"
+    case .speci:
+        return "Spezi"
+    }
 }

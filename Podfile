@@ -12,4 +12,5 @@ target 'Pills & Drinks' do
   pod 'Toast-Swift', '~> 3.0.1'
   pod 'SAConfettiView', :git => 'https://github.com/Shanlon/SAConfettiView.git'
   pod 'Eureka'
+  pod 'SplitRow', :git => 'https://github.com/kamerc/SplitRow.git', :branch => 'cocoapod-support'
 end

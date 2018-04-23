@@ -18,7 +18,7 @@ let healtKitTypesToRead : Set<HKObjectType> = [
     HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryCaffeine)!
 ]
 
-let healtKitTypesToWrite : Set<HKSampleType> = [
+let healtKitTypesToWrite : [HKSampleType] = [
     HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryWater)!,
     HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryCaffeine)!,
     HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryVitaminB12)!,

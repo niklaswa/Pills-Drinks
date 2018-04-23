@@ -18,6 +18,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private var tableEntries: [HealthItem]?
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var navigation: UINavigationItem!
     
     override func viewDidLoad() {
          super.viewDidLoad()
@@ -52,17 +53,25 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
         switch tabBarController.selectedIndex {
         case 1:
             tableEntries = items?.filter { $0.category == .pill }
-            self.navigationItem.title = "Pillen und Medikamente" // TODO: Doesn't work properly
+            navigation.title = "Pillen und Medikamente"
             print("Pillen und Medikamente")
+            if let tabController = self.parent as? UITabBarController {
+                tabController.navigationItem.title =  "Pillen und Medikamente"
+            }
         default:
             tableEntries = items?.filter { $0.category == .drink }
-            self.navigationItem.title = "Getränke" // TODO: Doesn't work properly
+            navigation.title = "Getränke"
             print("Getränke")
+            if let tabController = self.parent as? UITabBarController {
+                tabController.navigationItem.title =  "Getränke"
+            }
         }
         tableView.reloadData()
+        print("Current title: \(self.navigationItem.title!)")
     }
     
     func addItem(currentItem: HealthItem) {
