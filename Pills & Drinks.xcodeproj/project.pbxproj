@@ -10,6 +10,8 @@
 		61352CF0A763B4D6575FD3F5 /* Pods_Pills___Drinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF7FB9CDC78BE8BC0A5F6C8 /* Pods_Pills___Drinks.framework */; };
 		8501BFEA2076AAEA00604514 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501BFE92076AAEA00604514 /* Drink.swift */; };
 		8501BFEC2076ABA000604514 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501BFEB2076ABA000604514 /* Health.swift */; };
+		8524CB23208E185B00D289BA /* ItemInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524CB22208E185B00D289BA /* ItemInterfaceController.swift */; };
+		8524CB25208E1E9900D289BA /* ItemRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524CB24208E1E9900D289BA /* ItemRowController.swift */; };
 		8529C5DF2076A88E006C4D6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529C5DE2076A88E006C4D6A /* AppDelegate.swift */; };
 		8529C5E12076A88E006C4D6A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529C5E02076A88E006C4D6A /* FirstViewController.swift */; };
 		8529C5E62076A88E006C4D6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8529C5E42076A88E006C4D6A /* Main.storyboard */; };
@@ -79,6 +81,8 @@
 		0618161BD717A74E62544B47 /* Pods-Pills & Drinks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pills & Drinks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pills & Drinks/Pods-Pills & Drinks.debug.xcconfig"; sourceTree = "<group>"; };
 		8501BFE92076AAEA00604514 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		8501BFEB2076ABA000604514 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
+		8524CB22208E185B00D289BA /* ItemInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInterfaceController.swift; sourceTree = "<group>"; };
+		8524CB24208E1E9900D289BA /* ItemRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowController.swift; sourceTree = "<group>"; };
 		8529C5DB2076A88E006C4D6A /* Pills & Drinks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pills & Drinks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8529C5DE2076A88E006C4D6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8529C5E02076A88E006C4D6A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -223,8 +227,10 @@
 		85C740FC2084C1AB00387104 /* WatchExtension Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8524CB22208E185B00D289BA /* ItemInterfaceController.swift */,
 				85590E7B2084FF410020A472 /* WatchExtension Extension.entitlements */,
 				85C740FD2084C1AB00387104 /* InterfaceController.swift */,
+				8524CB24208E1E9900D289BA /* ItemRowController.swift */,
 				85C740FF2084C1AB00387104 /* ExtensionDelegate.swift */,
 				85C741012084C1AC00387104 /* Assets.xcassets */,
 				85C741032084C1AC00387104 /* Info.plist */,
@@ -464,6 +470,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8524CB23208E185B00D289BA /* ItemInterfaceController.swift in Sources */,
+				8524CB25208E1E9900D289BA /* ItemRowController.swift in Sources */,
 				85C741002084C1AB00387104 /* ExtensionDelegate.swift in Sources */,
 				85C740FE2084C1AB00387104 /* InterfaceController.swift in Sources */,
 			);

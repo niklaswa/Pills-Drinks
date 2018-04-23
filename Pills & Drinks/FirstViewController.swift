@@ -11,23 +11,31 @@ import TapticEngine
 import ZAlertView
 import Toast_Swift
 import SAConfettiView
+import WatchConnectivity
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, WCSessionDelegate {
 
     private var h = Health()
     private var tableEntries: [HealthItem]?
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var navigation: UINavigationItem!
+    @IBOutlet weak var navigation: UINavigationBar!
+    @IBOutlet weak var tabBar: UITabBar!
     
     override func viewDidLoad() {
          super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        if (WCSession.isSupported()) {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         
-        tabBarController?.delegate = self
+        tabBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,26 +60,19 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
-        switch tabBarController.selectedIndex {
-        case 1:
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        switch tabBar.selectedItem?.title {
+        case "Pillen und Medikamente":
             tableEntries = items?.filter { $0.category == .pill }
-            navigation.title = "Pillen und Medikamente"
+            navigation.topItem!.title = "Pillen und Medikamente"
             print("Pillen und Medikamente")
-            if let tabController = self.parent as? UITabBarController {
-                tabController.navigationItem.title =  "Pillen und Medikamente"
-            }
         default:
             tableEntries = items?.filter { $0.category == .drink }
-            navigation.title = "Getränke"
+            navigation.topItem!.title = "Getränke"
             print("Getränke")
-            if let tabController = self.parent as? UITabBarController {
-                tabController.navigationItem.title =  "Getränke"
-            }
         }
         tableView.reloadData()
-        print("Current title: \(self.navigationItem.title!)")
+        print("Current title: \(navigation.topItem?.title!)")
     }
     
     func addItem(currentItem: HealthItem) {
@@ -118,6 +119,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func addingEffect(with item: HealthItem) {
+        
+        if (WCSession.default.isReachable) {
+            // this is a meaningless message, but it's enough for our purposes
+            let message = ["Message": "Hello"]
+            WCSession.default.sendMessage(message, replyHandler: nil)
+        }
         self.view.makeToast("\(item.name) erfolgreich zu Health hinzugefügt")
         TapticEngine.notification.feedback(.success)
         
@@ -177,5 +184,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             items?.remove(at: indexPath.row)
             tableView.reloadData()
         }
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14111" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14111" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,28 +18,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1H3-VR-Ay7">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z5Y-lr-lwJ">
-                                <rect key="frame" x="0.0" y="702" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5Y-lr-lwJ">
+                                <rect key="frame" x="0.0" y="729" width="375" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem title="Getränke" image="glass-martini" id="Ah9-nA-ybP"/>
-                                    <tabBarItem systemItem="more" id="yOc-ap-KE0"/>
+                                    <tabBarItem title="Pillen und Medikamente" image="pills" id="yOc-ap-KE0"/>
                                 </items>
                             </tabBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IkP-XS-wBL">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Getränke" id="3Io-Ci-gzC">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ieD-0s-EK6"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1H3-VR-Ay7">
+                                <rect key="frame" x="0.0" y="88" width="375" height="640"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1H3-VR-Ay7" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="212-KH-68K"/>
+                            <constraint firstItem="1H3-VR-Ay7" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="44" id="212-KH-68K"/>
+                            <constraint firstItem="IkP-XS-wBL" firstAttribute="centerX" secondItem="PQr-Ze-W5v" secondAttribute="centerX" id="3aK-6Q-bu3"/>
+                            <constraint firstItem="z5Y-lr-lwJ" firstAttribute="leading" secondItem="1H3-VR-Ay7" secondAttribute="leading" id="Etn-bg-JIh"/>
                             <constraint firstItem="1H3-VR-Ay7" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="Itf-ck-GAB"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="1H3-VR-Ay7" secondAttribute="bottom" id="Oba-pw-1rg"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="1H3-VR-Ay7" secondAttribute="bottom" constant="50" id="Oba-pw-1rg"/>
+                            <constraint firstItem="z5Y-lr-lwJ" firstAttribute="centerX" secondItem="PQr-Ze-W5v" secondAttribute="centerX" id="UjC-se-dFh"/>
+                            <constraint firstItem="IkP-XS-wBL" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="WQT-Ha-ey5"/>
                             <constraint firstItem="1H3-VR-Ay7" firstAttribute="centerX" secondItem="PQr-Ze-W5v" secondAttribute="centerX" id="XsF-vt-QCp"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="1H3-VR-Ay7" secondAttribute="trailing" id="m7p-SU-Ook"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="IkP-XS-wBL" secondAttribute="trailing" id="pJy-jQ-y3E"/>
+                            <constraint firstItem="z5Y-lr-lwJ" firstAttribute="leading" secondItem="1H3-VR-Ay7" secondAttribute="leading" id="v8W-59-YBb"/>
                             <constraint firstItem="1H3-VR-Ay7" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="wvb-C0-k3V"/>
+                            <constraint firstItem="z5Y-lr-lwJ" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" constant="34" id="xSC-9m-ksG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
@@ -51,7 +65,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="navigation" destination="lUN-Vq-G7T" id="ejU-5A-y7F"/>
+                        <outlet property="navigation" destination="IkP-XS-wBL" id="LjC-MG-3kM"/>
+                        <outlet property="tabBar" destination="z5Y-lr-lwJ" id="93E-HD-zpK"/>
                         <outlet property="tableView" destination="1H3-VR-Ay7" id="YDr-5Q-JQy"/>
                         <segue destination="Zse-qw-vzq" kind="show" identifier="AddPillSegue" id="Pm8-9Z-fuo"/>
                         <segue destination="7UG-t6-rWA" kind="show" identifier="AddDrinkSegue" id="s7w-uO-rYw"/>
@@ -59,61 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1542.0289855072465" y="0.0"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="yl2-sM-qoP">
-            <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
-                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="1ic-ve-48a" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8Fm-Q1-v9k" kind="relationship" relationship="viewControllers" id="s93-cz-Fxz"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-162" y="0.0"/>
-        </scene>
-        <!--Getränke-->
-        <scene sceneID="2qI-zs-RWP">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1ic-ve-48a" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Getränke" image="glass-martini" selectedImage="glass-martini" id="acW-dT-cKf"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MhL-b7-RnM">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="4LG-2D-oeV"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qgo-DN-6Ct" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="697" y="-321"/>
-        </scene>
-        <!--Pillen und Medikamente-->
-        <scene sceneID="hTt-hO-WrK">
-            <objects>
-                <navigationController id="8Fm-Q1-v9k" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pillen und Medikamente" image="pills" selectedImage="pills" id="Meu-cj-vqy"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OGn-er-p8N">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="sXh-Sw-9Lz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JDZ-1o-auD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="697" y="360"/>
+            <point key="canvasLocation" x="1540" y="-1.4778325123152709"/>
         </scene>
         <!--Drink Form View Controller-->
         <scene sceneID="QBE-oM-WLK">
@@ -150,7 +111,4 @@
         <image name="glass-martini" width="25" height="25"/>
         <image name="pills" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="sXh-Sw-9Lz"/>
-    </inferredMetricsTieBreakers>
 </document>
